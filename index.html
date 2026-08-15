@@ -8,6 +8,7 @@
   <meta name="description" content="Discover 2 Written Test 9: complete the original test online, then review every answer with an explanation.">
   <link rel="icon" href="assets/brand/logo-official.webp">
   <link rel="stylesheet" href="styles.css?v=d2t9-v1">
+  <link rel="stylesheet" href="student-access.css?v=20260815">
 </head>
 <body>
   <header class="site-header">
@@ -24,8 +25,8 @@
     <section class="intro-band">
       <div class="intro-copy">
         <p class="eyebrow">Online written test</p>
-        <h2>Complete the test, then learn from every answer</h2>
-        <p>Work through all sections in order. Answers and explanations will appear only after all 50 points have been completed.</p>
+        <h2>Hoàn thành bài kiểm tra và chữa kĩ từng câu</h2>
+        <p>Con làm lần lượt tất cả các phần. Đáp án và phần giải thích tiếng Việt chỉ hiện sau khi con đã hoàn thành đủ 50 điểm.</p>
       </div>
       <div class="document-actions">
         <a class="button secondary" href="assets/files/Discover-2-Written-Test-9.pdf" download><span aria-hidden="true">&#8595;</span> Download original test</a>
@@ -40,21 +41,24 @@
     <form id="testForm" novalidate>
       <div id="sections"></div>
       <section class="submit-panel">
-        <div><p class="eyebrow">Finish the test</p><h2>Check your work before viewing the answers</h2><p id="submitHelp">Complete all 50 points. The page will take you to the first missing response.</p></div>
-        <button class="button primary" type="submit">Mark test and view explanations</button>
+        <div><p class="eyebrow">Hoàn thành bài</p><h2>Kiểm tra lại trước khi xem đáp án</h2><p id="submitHelp">Con cần trả lời đủ 50 điểm. Trang sẽ đưa con tới câu còn bỏ trống đầu tiên.</p></div>
+        <button class="button primary" type="submit">Chấm bài và xem giải thích</button>
       </section>
     </form>
     <section class="results" id="results" hidden aria-live="polite">
       <div class="score-panel">
-        <div><p class="eyebrow">Practice result</p><h2><span id="scoreValue">0</span> / 50</h2><p id="scoreMessage"></p></div>
-        <button class="button secondary" type="button" id="reviewMistakes">Review answers to correct</button>
+        <div><p class="eyebrow">Kết quả luyện tập</p><h2><span id="scoreValue">0</span> / 50</h2><p id="scoreMessage"></p></div>
+        <button class="button secondary" type="button" id="reviewMistakes">Xem lại câu cần chữa</button>
       </div>
       <div class="answer-review" id="answerReview"></div>
-      <button class="button secondary restart" type="button" id="restartTest">Start again</button>
+      <button class="button secondary restart" type="button" id="restartTest">Làm lại từ đầu</button>
     </section>
   </main>
   <footer><p>Discover 2 &middot; Written Test 9</p></footer>
   <script src="test-data.js?v=d2t9-v1"></script>
+  <script src="discover-2-vietnamese.js?v=20260815"></script>
   <script src="engine.js?v=d2t9-v1"></script>
+  <script src="score-config.js?v=20260815"></script>
+  <script src="student-access.js?v=20260815"></script>
 </body>
 </html>

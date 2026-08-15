@@ -42,7 +42,7 @@ form.addEventListener("submit", (event) => {
   const incomplete = missing();
   if (incomplete.length) {
     incomplete.forEach((item) => item.closest(".question").classList.add("is-missing"));
-    document.querySelector("#submitHelp").textContent = `The test is missing ${incomplete.length} response${incomplete.length === 1 ? "" : "s"}. Complete the highlighted item before viewing the answers.`;
+    document.querySelector("#submitHelp").textContent = `Con còn ${incomplete.length} ô chưa trả lời. Hãy hoàn thành ô đang được đánh dấu trước khi xem đáp án.`;
     incomplete[0].scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
@@ -50,7 +50,7 @@ form.addEventListener("submit", (event) => {
 });
 
 document.querySelector("#restartTest").onclick = () => {
-  if (confirm("Clear every answer and start this test again?")) {
+  if (confirm("Xóa toàn bộ câu trả lời và làm lại từ đầu?")) {
     localStorage.removeItem(STORAGE_KEY);
     location.reload();
   }
@@ -234,8 +234,8 @@ function grade() {
 
   scoreValue.textContent = score;
   scoreMessage.textContent = score === TOTAL_POINTS
-    ? "Every answer is correct."
-    : `Review ${TOTAL_POINTS - score} point${TOTAL_POINTS - score === 1 ? "" : "s"} and compare each explanation with the original question.`;
+    ? "Con đã trả lời đúng toàn bộ câu hỏi."
+    : `Con cần chữa lại ${TOTAL_POINTS - score} điểm. Hãy đọc kĩ câu gốc, đáp án đúng và phần giải thích bên dưới.`;
   answerReview.innerHTML = reviews.map(reviewMarkup).join("");
   results.hidden = false;
   form.hidden = true;
@@ -247,12 +247,12 @@ function reviewMarkup(review) {
   const earned = review.parts.filter((part) => part.correct).length;
   const answers = review.parts.map((part) => `
     <div class="review-part ${part.correct ? "" : "is-wrong"}">
-      ${review.parts.length > 1 ? `<p><b>${part.label || "Answer"}</b></p>` : ""}
-      <div class="review-answer"><span>Your answer: <b>${html(part.value || "(blank)")}</b></span><span>Correct answer: <b>${html(part.answers[0])}</b></span></div>
-      <p class="explanation"><b>Explanation:</b> ${part.explanation}</p>
+      ${review.parts.length > 1 ? `<p><b>${part.label || "Câu trả lời"}</b></p>` : ""}
+      <div class="review-answer"><span>Con trả lời: <b>${html(part.value || "(bỏ trống)")}</b></span><span>Đáp án đúng: <b>${html(part.answers[0])}</b></span></div>
+      <p class="explanation"><b>Giải thích:</b> ${part.explanation}</p>
     </div>`).join("");
   return `<article class="review-card ${review.correct ? "" : "is-wrong"}">
-    <div class="review-head"><h3>Section ${review.section.label}, question ${review.number}</h3><span class="review-status">${earned}/${review.parts.length} point${review.parts.length === 1 ? "" : "s"}</span></div>
+    <div class="review-head"><h3>Phần ${review.section.label}, câu ${review.number}</h3><span class="review-status">${earned}/${review.parts.length} điểm</span></div>
     <p class="review-question">${review.question.prompt}</p>
     ${answers}
   </article>`;
