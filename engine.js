@@ -246,8 +246,8 @@ function reviewMarkup(review) {
   const answers = review.parts.map((part) => `
     <div class="review-part ${part.correct ? "" : "is-wrong"}">
       ${review.parts.length > 1 ? `<p><b>${part.label || "Câu trả lời"}</b></p>` : ""}
-      <div class="review-answer"><span>Con trả lời: <b>${html(part.value || "(bỏ trống)")}</b></span><span>Đáp án đúng: <b>${html(part.answers[0])}</b></span></div>
-      <p class="explanation"><b>Giải thích:</b> ${part.explanation}</p>
+      <div class="review-answer"><span>Con trả lời: <b>${html(part.value || "(bỏ trống)")}</b></span><span>Đáp án đúng: <b>${html(DiscoverAnswerDisplay.formatAnswer(part.answers[0]))}</b></span></div>
+      <p class="explanation"><b>Giải thích:</b> ${escapeHtml(DiscoverAnswerDisplay.formatExplanation(part.explanation))}</p>
     </div>`).join("");
   return `<article class="review-card ${review.correct ? "" : "is-wrong"}">
     <div class="review-head"><h3>Phần ${review.section.label}, câu ${review.number}</h3><span class="review-status">${earned}/${review.parts.length} điểm</span></div>
